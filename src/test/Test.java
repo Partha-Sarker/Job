@@ -13,12 +13,9 @@ public class Test{
     }
     static int test = 4;
     public static void main(String[] args){
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(10);
-        list.add(11);
-        list.remove(1);
-        System.out.println(list.toString());
-//        AbstractClass c1 = new AbstractClass(2);
+        ArrayList<int[]> h = new ArrayList<>();
+        int[] array = {1, 2, 3};
+        Map<Integer, Integer> map = new HashMap<>();
     }
 
     private static int test() {
