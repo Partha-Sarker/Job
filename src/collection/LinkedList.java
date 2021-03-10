@@ -1,20 +1,20 @@
 package collection;
 
-class LinkedList<T> {
-    Node head;
+class LinkedList {
+    private Node head, sortedHead;
     int size = 0;
 
-    class Node<T> {
-        T data;
+    class Node {
+        int value;
         Node next;
 
-        Node(T data) {
-            this.data = data;
+        Node(int value) {
+            this.value = value;
         }
     }
 
-    public void add(T data) {
-        Node<T> node = new Node(data);
+    public void add(int data) {
+        Node node = new Node(data);
 
         if (head == null)
             head = node;
@@ -28,7 +28,7 @@ class LinkedList<T> {
         size++;
     }
 
-    public void insertAt(int index, T data) {
+    public void insertAt(int index, int data) {
         Node node = new Node(data);
 
         if (index == 0) {
@@ -44,7 +44,7 @@ class LinkedList<T> {
         size++;
     }
 
-    public void insertAtStart(T data) {
+    public void insertAtStart(int data) {
         Node node = new Node(data);
 
         node.next = head;
@@ -68,13 +68,13 @@ class LinkedList<T> {
     public void showValues() {
         Node currNode = head;
         while (currNode.next != null) {
-            System.out.print(currNode.data + " ");
+            System.out.print(currNode.value + " ");
             currNode = currNode.next;
         }
-        System.out.println(currNode.data);
+        System.out.println(currNode.value);
     }
 
-    public void reverseValues() { // a -> b -> c -> d
+    public void reverseValues() {
         Node prev = null, currentNode = head, next = null;
 
         while (currentNode != null) {
@@ -85,11 +85,52 @@ class LinkedList<T> {
         }
         head = prev;
     }
+
+    public void sortLinkedList() {
+        sortedHead = null;
+        Node currentNode = head, next;
+        while (currentNode != null) {
+            next = currentNode.next;
+            insertionSort(currentNode);
+            currentNode = next;
+        }
+        head = sortedHead;
+    }
+
+    public void sortByValue() {
+        Node firstNode = head;
+        while (firstNode.next != null) {
+            Node secondNode = firstNode.next;
+            while (secondNode != null) {
+                if (firstNode.value > secondNode.value) {
+                    int temp = firstNode.value;
+                    firstNode.value = secondNode.value;
+                    secondNode.value = temp;
+                }
+                secondNode = secondNode.next;
+            }
+            firstNode = firstNode.next;
+        }
+    }
+
+    private void insertionSort(Node node) {
+        if (sortedHead == null || sortedHead.value >= node.value) {
+            node.next = sortedHead;
+            sortedHead = node;
+            return;
+        }
+        Node currentNode = sortedHead;
+        while (currentNode.next != null && node.value > currentNode.next.value) {
+            currentNode = currentNode.next;
+        }
+        node.next = currentNode.next;
+        currentNode.next = node;
+    }
 }
 
 class Main {
     public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList list = new LinkedList();
         list.add(1);
         list.add(5);
         list.showValues();
@@ -103,6 +144,8 @@ class Main {
         list.removeAt(0);
         list.showValues();
         list.reverseValues();
+        list.showValues();
+        list.sortByValue();
         list.showValues();
     }
 }

@@ -2,10 +2,7 @@ package test;
 
 import sorting.BadSort;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Test{
     Test () {
@@ -13,9 +10,10 @@ public class Test{
     }
     static int test = 4;
     public static void main(String[] args){
-        ArrayList<int[]> h = new ArrayList<>();
         int[] array = {1, 2, 3};
-        Map<Integer, Integer> map = new HashMap<>();
+        String str = "hello";
+        changeArray(array);
+        System.out.println(Arrays.asList(array).size());
     }
 
     private static int test() {
@@ -95,7 +93,8 @@ public class Test{
     }
 
     private static void changeArray(int[] arr) {
-        arr[0] = 9999;
+//        arr[0] = 9999;
+        arr = new int[5];
     }
 
     private static void changeList(List<Integer> list) {

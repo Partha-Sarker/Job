@@ -1,7 +1,5 @@
 package designpattern;
 
-import java.util.Scanner;
-
 public class MVCPattern {
     public static void main(String[] args) {
         StudentModel model = new StudentModel("Alan", 2);
