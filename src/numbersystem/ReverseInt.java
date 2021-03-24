@@ -54,6 +54,6 @@ public class ReverseInt {
             prev_rev_num = rev_num;
             num = num/10;
         }
-        return (negativeFlag == true)? -rev_num : rev_num;
+        return (negativeFlag == true) ? -rev_num : rev_num;
     }
 }

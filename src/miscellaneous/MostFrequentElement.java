@@ -8,14 +8,14 @@ import java.util.Map;
 public class MostFrequentElement {
     public static void main(String[] args) {
         int[] array = {13, 1, 2, 13, 8, -2, 10, 8, 8, 2, 10, 13, 7, 6, 13};
-        System.out.println(getMostFrequentElementV2(array));
+        System.out.println(getMostFrequentElementV1(array));
     }
 
     public static int getMostFrequentElementV1(int[] array){
         HashMap<Integer, Integer> countMap = new HashMap<>();
         for(int val : array){
             Integer count = countMap.get(val);
-            countMap.put(val, count != null ? count + 1 : 1);
+            countMap.put(val, (count != null) ? count + 1 : 1);
         }
         System.out.println(countMap.toString());
         int maxCount = 1;

@@ -1,142 +1,125 @@
 package test;
 
-import sorting.BadSort;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
 
-import java.util.*;
+public class Test {
 
-public class Test{
-    Test () {
+    private static class Texts<T> {
+        String s1, s2;
 
-    }
-    static int test = 4;
-    public static void main(String[] args){
-        int[] array = {1, 2, 3};
-        String str = "hello";
-        changeArray(array);
-        System.out.println(Arrays.asList(array).size());
-    }
-
-    private static int test() {
-        return test++;
-    }
-
-    private static void stringTest(){
-        String a = "abc";
-        String b = "abc";
-        if(a==b)
-            System.out.println("a and b are equal!");
-        a = "hello";
-        printStuffs(a, b);
-        String c = new String("hi");
-        String d = new String("hi");
-        if(c==d){
-            System.out.println("c and d are equal");
+        Texts(String s1, String s2) {
+            this.s1 = s1;
+            this.s2 = s2;
         }
-        b = a;
-        a = "new";
-        printStuffs(a, b);
-        c = d;
-        if(c==d)
-            printStuffs("c equals d! yeee");
-        c = "what";
-        d = c;
-        d = "why";
-        printStuffs(c, d);
 
+        @Override
+        public int hashCode() {
+            String newString = s1 + s2;
+            return newString.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+            if (!(obj instanceof Texts))
+                return false;
+            Texts thisObj = (Texts) obj;
+            return thisObj.s1.equals(this.s1) && thisObj.s2.equals(this.s2);
+        }
+
+        @Override
+        public String toString() {
+            return s1 + " " + s2;
+        }
     }
 
-    public static <T> void printStuffs(T... values){
+    public static void main(String[] args) {
+//        Map<Texts, Integer> countMap = new HashMap<>();
+//        countMap.put(new Texts("a", "b"), 2);
+//        countMap.put(new Texts("a", "b"), 3);
+//        for (Texts key : countMap.keySet()) {
+//            System.out.println(key);
+//        }
+
+//        List<List<Integer>> adjacencyList = new ArrayList<>(10);
+//        adjacencyList.get(9).add(10);
+//        System.out.println(adjacencyList.toString());
+//        System.out.println(Integer.MAX_VALUE + " " + 8276704464L);
+
+//        List<Integer> list = List.of(0, 1, 2, 3);
+//        List square = list.stream().map( x -> x * x).collect(Collectors.toList());
+//        square.forEach( x -> System.out.println(x));
+
+//        Set<Integer> set = new HashSet<>();
+
+//        Map<String, Integer> map = Map.of("hello", 2, "hi", 3);
+//        map.computeIfPresent("hi", new BiFunction<String, Integer, Integer>() {
+//            @Override
+//            public Integer apply(String s, Integer integer) {
+//                return integer + 1;
+//            }
+//        });
+//        System.out.println(map.get("hi"));
+
+//
+//        System.out.println(map.getOrDefault(5, -3));
+//
+//        Set<Integer> set = new HashSet<>(list);
+
+//        int[][] ar1 = {{1, 2}, {3, 4}};
+//        int[][] ar2 = Arrays.copyOf(ar1, ar1.length);
+//        System.arraycopy(ar1, 0, ar2, 0, ar1.length);
+//        ar1[0][0] = 9;
+////        ar1[0] = new int[]{8, 9};
+//        for (int[] array : ar2) {
+//            for (int val : array) {
+//                System.out.print(val + " ");
+//            }
+//            System.out.println();
+//        }
+
+//        PriorityQueue<Integer> pq = new PriorityQueue<>();
+//        pq.add(6);
+//        pq.add(3);
+//        pq.add(2);
+//        while (!pq.isEmpty())
+//            System.out.println(pq.poll());
+        String a = "hi";
+        String b = "hello";
+        String c = a;
+        a = "new";
+        System.out.println(b.substring(1));
+
+        StringBuilder sb = new StringBuilder(b);
+//        sb.setCharAt();
+//        LinkedList
+//        ArrayDeque
+    }
+
+
+
+    public static <T> void printStuffs(T... values) {
         for (T val : values) {
             System.out.print(val + " ");
         }
         System.out.println();
     }
-
-    private static void passByValRef(){
-        Integer a = 10;
-        int b = 2;
-        passByRef(a);
-        printStuffs(a);
-        a = 20;
-        b = 20;
-        if(a==b)
-            printStuffs("a equals b!");
-        Integer c = new Integer(2);
-        passByRef(c);
-        printStuffs(c);
-    }
-
-    private static void passByRef(Integer a){
-        a = 40;
-    }
-
-    private static void printDiamond(int n){ // 7
-        int midIndex = (n % 2 == 1) ? n / 2 : n / 2 - 1; // 3
-        int maxLength = midIndex * 2 + 1; // 7
-
-        for (int i = 0; i < n; i++) { // i = 3
-            int starSize;
-            if (i < n / 2)
-                starSize = 1 + (i * 2); //7
-            else
-                starSize = 1 + ((n - i - 1) * 2); //
-            int startStarIndex = (maxLength / 2) - starSize / 2; //  aa***aa, 2
-            int endStarIndex = startStarIndex + starSize; // 5
-            for (int j = 0; j < maxLength; j++) {
-                if (j >= startStarIndex && j < endStarIndex)
-                    System.out.print('*');
-                else
-                    System.out.print(' ');
-            }
-            System.out.println();
-        }
-    }
-
-    private static void changeArray(int[] arr) {
-//        arr[0] = 9999;
-        arr = new int[5];
-    }
-
-    private static void changeList(List<Integer> list) {
-        list.set(0, 9999);
-    }
 }
 
-class A extends Super{
-    int a;
-    A (int a) {
+enum Hi {
+    HELLO(1);
+    final int a;
+
+
+    Hi(int a) {
         this.a = a;
     }
 }
 
-class B extends Super{
-    int a;
-    B (int a) {
-        this.a = a;
-    }
-}
-
-class Super {
-    int sup;
-    public void printHi() {
-        System.out.println("Hi...");
-    }
-}
-
-interface IA {
-    void hello();
-    default int hi(int a) {
-        return 2;
-    }
-}
-
-abstract class AbstractClass {
-    int param;
-    AbstractClass(int p) {
-        param = p;
-    }
-
-    public String hello() {
-        return " ";
-    }
+interface Inter1<T> {
+    T hello(T a);
 }

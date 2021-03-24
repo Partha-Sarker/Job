@@ -30,17 +30,12 @@ public class RectangleCheck {
                 dstList.add(dst);
             }
         }
-        Collections.sort(dstList, Collections.reverseOrder());
-        System.out.println(dstList.toString());
-//        int len = dstList.size();
+        dstList.sort(Collections.reverseOrder());
+//        System.out.println(dstList.toString());
         if(dstList.get(0).equals(dstList.get(1))){
             System.out.println("Diagonal check passed");
             if(!dstList.get(1).equals(dstList.get(2))){
                 return true;
-//                if(!dstList.get(len - 1).equals(0d)){
-//                    System.out.println("Not zero length check passed");
-//                    return true;
-//                }
             }
         }
         return false;

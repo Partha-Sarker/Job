@@ -93,6 +93,8 @@ public class Main {
                 strArray[i + 1] -= diff;
             }
         }
+//        return new String(strArray);
+//        return strArray.toString();
         return String.valueOf(strArray);
     }
 

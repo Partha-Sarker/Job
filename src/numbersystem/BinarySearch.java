@@ -1,12 +1,11 @@
 package numbersystem;
 
-import test.Test;
-
 public class BinarySearch {
     public static void main(String[] args) {
         int[] array = {2, 3, 6, 7, 7, 7, 7, 7, 9, 14, 19, 20, 29, 34};
+        int[] array1 = {};
         int value = 15;
-        System.out.println(upperBound(array, value) - lowerBound(array, value));
+        System.out.println(upperBound(array1, value) - lowerBound(array1, value));
     }
 
     public static int countOccurrence(int[] array, int value) {
@@ -16,7 +15,8 @@ public class BinarySearch {
     }
 
     public static int binarySearch(int[] array, int value) {
-        int start = 0, end = array.length - 1, mid = -1;
+        int start = 0, end = array.length - 1, mid;
+
         while (start <= end) {
             mid = (start + end) / 2;
             if (array[mid] == value)
@@ -34,6 +34,7 @@ public class BinarySearch {
     }
 
     private static int binSearch(int[] array, int value, int start, int end) {
+
         if (start > end)
             return -1;
         int mid = (start + end) / 2;
@@ -48,15 +49,19 @@ public class BinarySearch {
 
     private static int lowerBound(int[] array, int value) {
         int start = 0, end = array.length - 1, mid = -1;
+        if (end == -1)
+            return 0;
+
         while (start <= end) {
             mid = (start + end) / 2;
-            if (array[mid] == value && ((mid == 0 || value > array[mid - 1])))
+            if (array[mid] == value && (mid == 0 || value > array[mid - 1]))
                 return mid;
             else if (value > array[mid])
                 start = mid + 1;
             else
                 end = mid - 1;
         }
+
         if (array[mid] < value)
             return mid + 1;
         return mid;
@@ -76,6 +81,8 @@ public class BinarySearch {
 
     private static int upperBound(int[] array, int value) {
         int start = 0, end = array.length - 1, mid = -1;
+        if (end == -1)
+            return 0;
         while (start <= end) {
             mid = (start + end) / 2;
             if (array[mid] == value && (mid == array.length - 1 || array[mid + 1] > value))

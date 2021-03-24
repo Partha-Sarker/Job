@@ -1,12 +1,10 @@
 package sorting;
 
-import test.Test;
-
 public class BadSort {
     public static void main(String[] args) {
         int[] unsortedArray = {5, 2, 6, 2, 6, 1, 0, 9};
-        int[] sortedArray = insertionSort(unsortedArray);
-        printIntArray(sortedArray);
+        insertionSortV2(unsortedArray);
+        printIntArray(unsortedArray);
     }
 
     public static int[] bubbleSort(int[] array) {
@@ -53,6 +51,22 @@ public class BadSort {
             array[j + 1] = key;
         }
         return array;
+    }
+
+    public static void insertionSortV2(int[] array) {
+        int len = array.length;
+        for (int i = 1; i < len; i++) {
+            if (array[i] < array[i - 1]) {
+                int currentIndex = i;
+                while (currentIndex > 0 &&  array[currentIndex] < array[currentIndex - 1]) {
+                    int temp = array[currentIndex];
+                    array[currentIndex] = array[currentIndex -1];
+                    array[currentIndex - 1] = temp;
+                    currentIndex--;
+                }
+            }
+        }
+
     }
 
     public static void printIntArray(int[] array) {
