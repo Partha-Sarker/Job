@@ -6,6 +6,7 @@ public class Main {
 //        System.out.println(checkAnagram("nl", "cx"));
 //        System.out.println('z' - 'a' + 1);
 //        reverseStringV1("dhfjdhj");
+//        System.out.println(Integer.valueOf("1010", 2));
     }
 
     public static String reverseString(String str){
@@ -78,7 +79,7 @@ public class Main {
             else
                 newCharString[i] = originalString.charAt(i);
         }
-        return String.copyValueOf(newCharString);
+        return String.valueOf(newCharString);
     }
 
     public static String changeFirstCharOfWordToLower(String str) {

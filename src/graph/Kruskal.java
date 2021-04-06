@@ -82,14 +82,14 @@ public class Kruskal {
                 {0, 3, 0, 0, 7},
                 {6, 8, 0, 0, 9},
                 {0, 5, 7, 9, 0}});
-        kruskal = new Kruskal(5);
-        kruskal.addEdge(0, 1, 2);
-        kruskal.addEdge(0, 3, 6);
-        kruskal.addEdge(1, 2, 3);
-        kruskal.addEdge(1, 3, 8);
-        kruskal.addEdge(1, 4, 5);
-        kruskal.addEdge(2, 4, 7);
-        kruskal.addEdge(3, 4, 9);
+//        kruskal = new Kruskal(5);
+//        kruskal.addEdge(0, 1, 2);
+//        kruskal.addEdge(0, 3, 6);
+//        kruskal.addEdge(1, 2, 3);
+//        kruskal.addEdge(1, 3, 8);
+//        kruskal.addEdge(1, 4, 5);
+//        kruskal.addEdge(2, 4, 7);
+//        kruskal.addEdge(3, 4, 9);
         kruskal.printMST();
     }
 

@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class DecimalBinary {
     public static void main(String[] args) {
-        int num = -128;
+        int num = 32;
         String binaryString = getBinaryFromDecimal(num, 8);
         int converted = BinaryDecimal.getDecimalFromSignedBinary(binaryString);
         System.out.println(num);

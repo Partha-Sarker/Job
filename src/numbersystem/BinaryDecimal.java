@@ -17,7 +17,7 @@ public class BinaryDecimal {
             binaryArray = getTwosComplement(binaryArray);
             symbol = -1;
         }
-//        System.out.println(binaryArray);
+
         for (int i = 1; i < len; i++) {
             int power = len - i - 1;
             int digit = binaryArray[i] - '0';

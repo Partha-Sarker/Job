@@ -1,9 +1,6 @@
 package test;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Test {
 
@@ -88,16 +85,35 @@ public class Test {
 //        pq.add(2);
 //        while (!pq.isEmpty())
 //            System.out.println(pq.poll());
-        String a = "hi";
-        String b = "hello";
-        String c = a;
-        a = "new";
-        System.out.println(b.substring(1));
-
-        StringBuilder sb = new StringBuilder(b);
+//        String a = "hi";
+//        String b = "hello";
+//        String c = a;
+//        a = "new";
+//        System.out.println(b.substring(1));
+//
+//        StringBuilder sb = new StringBuilder(b);
 //        sb.setCharAt();
 //        LinkedList
 //        ArrayDeque
+
+//        String a = "hello";
+//        String b = "ll";
+//        System.out.println(a.indexOf(b));
+
+//        List<Integer> list = new ArrayList<>(List.of(1, 2, 3));
+//        list.sort(Collections.reverseOrder());
+//        System.out.println(list);
+//        Set<Integer> medianSet = new HashSet<>();
+//        medianSet.stream().mapToInt(x -> x).toArray();
+
+        TreeSet<Integer> set = new TreeSet<>(Collections.reverseOrder());
+        set.add(2);
+        set.add(2);
+        set.add(5);
+        System.out.println(set);
+        System.out.println(set.pollFirst());
+        System.out.println(set);
+
     }
 
 

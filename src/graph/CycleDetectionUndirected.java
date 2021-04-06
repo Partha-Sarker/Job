@@ -30,6 +30,26 @@ public class CycleDetectionUndirected {
         return false;
     }
 
+    private boolean bfs(int node, Set<Integer>[] adjList, boolean[] visited) {
+        int[] parent = new int[visited.length];
+        visited[node] = true;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            int currentNode = queue.poll();
+            for (int newNode : adjList[currentNode]) {
+                if (newNode == parent[newNode])
+                    continue;
+                if (visited[newNode])
+                    return true;
+                visited[newNode] = true;
+                queue.offer(newNode);
+                parent[newNode] = currentNode;
+            }
+        }
+        return false;
+    }
+
     public boolean hasCycleV2() {
         boolean[] visited = new boolean[adjList.length];
         for (int i = 0; i < visited.length; i++) {
@@ -37,6 +57,19 @@ public class CycleDetectionUndirected {
                 if (dfsCheck(i, visited, adjList, -1))
                     return true;
             }
+        }
+        return false;
+    }
+
+    private boolean dfsCheck(int node, boolean[] visited, Set<Integer>[] adj, int parent) {
+        visited[node] = true;
+        for (int newNode : adj[node]) {
+            if (visited[newNode]) {
+                if (newNode != parent)
+                    return true;
+            }
+            else if (dfsCheck(newNode, visited, adj, node))
+                return true;
         }
         return false;
     }
@@ -65,39 +98,6 @@ public class CycleDetectionUndirected {
         if (node == parent[node])
             return node;
         return parent[node] = find(parent[node], parent);
-    }
-
-    private boolean dfsCheck(int node, boolean[] visited, Set<Integer>[] adj, int parent) {
-        visited[node] = true;
-        for (int newNode : adj[node]) {
-            if (visited[newNode]) {
-                if (newNode != parent)
-                    return true;
-            }
-            else if (dfsCheck(newNode, visited, adj, node))
-                return true;
-        }
-        return false;
-    }
-
-    private boolean bfs(int node, Set<Integer>[] adjList, boolean[] visited) {
-        int[] parent = new int[visited.length];
-        visited[node] = true;
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(node);
-        while (!queue.isEmpty()) {
-            int currentNode = queue.poll();
-            for (int newNode : adjList[currentNode]) {
-                    if (newNode == parent[newNode])
-                        continue;
-                    if (visited[newNode])
-                        return true;
-                    visited[newNode] = true;
-                    queue.offer(newNode);
-                    parent[newNode] = currentNode;
-            }
-        }
-        return false;
     }
 
     public static void main(String[] args) {

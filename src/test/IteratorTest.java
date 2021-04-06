@@ -44,13 +44,44 @@ public class IteratorTest {
 //        while (it.hasNext()) {
 //            System.out.println(it.next());
 //        }
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        Integer ans = hm.get(3);
-        if (ans == null) {
-            System.out.println("null!");
-        }
+//        HashMap<Integer, Integer> hm = new HashMap<>();
+//        Integer ans = hm.get(3);
+//        if (ans == null) {
+//            System.out.println("null!");
+//        }
+
+        Product products[] = new Product[3];
+        products[0] = new Product(2, 8);
+        products[1] = new Product(3, 6);
+        products[2] = new Product(4, 12);
+        Comparator<Product> customComparator = (p1, p2) -> (int) (p2.getRatio() - p1.getRatio());
+        Arrays.sort(products);
+        for (Product p : products)
+            System.out.println(p);
     }
 }
+
+class Product implements Comparable<Product>{
+    int weight, value;
+    Product(int w, int v) {
+        weight = w;
+        value = v;
+    }
+    public double getRatio() {
+        return (double) value / (double) weight;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("weight: %d, value: %d, ratio: %f", weight, value, getRatio());
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return (int) (o.getRatio() - getRatio());
+    }
+}
+
 //
 //class CustomObject implements Comparable<CustomObject> {
 //    int a, b;

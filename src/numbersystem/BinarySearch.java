@@ -18,7 +18,7 @@ public class BinarySearch {
         int start = 0, end = array.length - 1, mid;
 
         while (start <= end) {
-            mid = (start + end) / 2;
+            mid = start + (end - start) / 2;
             if (array[mid] == value)
                 return mid;
             else if (value < array[mid])
@@ -34,7 +34,6 @@ public class BinarySearch {
     }
 
     private static int binSearch(int[] array, int value, int start, int end) {
-
         if (start > end)
             return -1;
         int mid = (start + end) / 2;
@@ -44,7 +43,6 @@ public class BinarySearch {
             return binSearch(array, value, mid + 1, end);
         else
             return binSearch(array, value, start, mid - 1);
-
     }
 
     private static int lowerBound(int[] array, int value) {
@@ -69,6 +67,9 @@ public class BinarySearch {
 
     private static int lowerBoundV2(int[] array, int value) {
         int start = 0, end = array.length - 1, mid;
+        if (end == -1)
+            return 0;
+
         while (start < end) {
             mid = (start + end) / 2;
             if (value > array[mid])
@@ -83,6 +84,7 @@ public class BinarySearch {
         int start = 0, end = array.length - 1, mid = -1;
         if (end == -1)
             return 0;
+
         while (start <= end) {
             mid = (start + end) / 2;
             if (array[mid] == value && (mid == array.length - 1 || array[mid + 1] > value))

@@ -4,24 +4,19 @@ import java.util.List;
 
 public class Miscellaneous {
     public static void main(String[] args) {
-//        System.out.println(isPowerOf2V2(1024));
+        System.out.println(isPowerOf2V2(1024));
         printAllPrime(100);
 //        System.out.println(isPrime(49));
     }
 
     public static boolean isPowerOf2(int num) {
-        while (num > 0) {
+        while (num > 1) {
             int remainder = num % 2;
-            if (remainder == 1) {
-                if (num == 1)
-                    return true;
-                if (num > 1)
-                    return false;
-            }
-            else
-                num /= 2;
+            if (remainder == 1)
+                return false;
+            num /= 2;
         }
-        return false;
+        return true;
     }
 
     public static boolean isPowerOf2V2(int num) {
@@ -36,17 +31,18 @@ public class Miscellaneous {
 
     public static void printAllPrime(int num) {
         boolean primeArray[] = new boolean[num + 1];
-        primeArray[0] = true;
-        primeArray[1] = true;
+        for (int i = 2; i < primeArray.length; i++) primeArray[i] = true;
+        primeArray[0] = false;
+        primeArray[1] = false;
         for (int i = 2; i * i <= num; i++) {
-            if (primeArray[i] == false) {
+            if (primeArray[i]) {
                 for (int j = i * i; j <= num; j += i) {
-                    primeArray[j] = true;
+                    primeArray[j] = false;
                 }
             }
         }
         for (int i = 2; i <= num; i++) {
-            if (!primeArray[i])
+            if (primeArray[i])
                 System.out.print(i + " ");
         }
         System.out.println();

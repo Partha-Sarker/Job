@@ -4,6 +4,7 @@ public class Diamond {
     public static void main(String[] args) {
         printDiamond(10);
     }
+
     public static void printDiamond(int n){ // 7
         int midIndex = (n % 2 == 1) ? n / 2 : n / 2 - 1; // 3
         int maxLength = midIndex * 2 + 1; // 7
@@ -15,7 +16,7 @@ public class Diamond {
             else
                 starSize = 1 + ((n - i - 1) * 2); //
 
-            int startStarIndex = (maxLength / 2) - starSize / 2; //  aa***aa, 2
+            int startStarIndex = (maxLength / 2) - (starSize / 2); //  aa***aa, 2
             int endStarIndex = startStarIndex + starSize; // 5
             for (int j = 0; j < maxLength; j++) {
                 if (j >= startStarIndex && j < endStarIndex)

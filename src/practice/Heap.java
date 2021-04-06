@@ -13,7 +13,7 @@ public class Heap {
             return;
         int parentIndex = (currentIndex - 1) / 2;
         int parentValue = heap.get(parentIndex);
-        while (parentIndex >= 0 && parentValue < value) {
+        while (parentValue < value) {
             heap.set(currentIndex, parentValue);
             heap.set(parentIndex, value);
 
@@ -47,12 +47,14 @@ public class Heap {
     private void heapify(int rootIndex) {
         int maxIndex = rootIndex, len = heap.size();
         int leftChildIndex = 2 * rootIndex + 1, rightChildIndex = leftChildIndex + 1;
+
         if (leftChildIndex < len && heap.get(leftChildIndex) > heap.get(maxIndex))
             maxIndex = leftChildIndex;
         if (rightChildIndex < len && heap.get(rightChildIndex) > heap.get(maxIndex))
             maxIndex = rightChildIndex;
         if (maxIndex == rootIndex)
             return;
+
         int rootValue = heap.get(rootIndex);
         heap.set(rootIndex, heap.get(maxIndex));
         heap.set(maxIndex, rootValue);
